@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Чек для печати</title>
+  <style>
+    body {
+      font-family: monospace;
+      padding: 20px;
+      width: 300px;
+    }
+
+    .receipt {
+      border: 1px dashed #000;
+      padding: 10px;
+      width: 250px;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+
+    /* ❌ Скрывать при печати */
+    @media print {
+      .no-print {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="receipt" id="receipt">
+    <div class="center bold">Продуктовый магазин</div>
+    <div class="center">Дата: <span id="date"></span></div>
+    <hr>
+    <div>Товар: Яблоко</div>
+    <div>Цена: 50 сом</div>
+    <div>Кол-во: 2</div>
+    <div>Сумма: 100 сом</div>
+    <hr>
+    <div class="bold">Итого: 100 сом</div>
+    <div class="center">Спасибо за покупку!</div>
+  </div>
+
+  <!-- 👇 Кнопка исчезает при печати -->
+  <br>
+  <button class="no-print" onclick="window.print()">Печать</button>
+
+  <script>
+    const now = new Date();
+    document.getElementById("date").innerText = now.toLocaleString();
+  </script>
+
+</body>
+</html>
